@@ -20,5 +20,5 @@ int main(int argc, char *argv[])
 
     unsigned int num = (unsigned int)atoi(argv[1]);
     printBinary(num);
-    return 0;
+    ;
 }
