@@ -6,7 +6,7 @@ void PrintBin(unsigned int a)
         printf("%d", ((a >> i) & 1));
     }
 }
-int main2()
+int main()
 {
     unsigned int a;
     printf("Enter an integer :");
