@@ -29,8 +29,15 @@ int main()
     printf("Extracting bits from bit 2 to bit 4: %x\n", (reg >> 2) & mask);
     PrintBin((reg >> 2) & mask);
 
-    uint8_t val = reg & ~(BV(2) | (~BV(3)) | (~BV(4)));
-    //                        0        1       1
+    // writing 011 at bits 2 to 4
+    // clearing 4th bit                  0
+    uint8_t val = reg & ~(BV(4));
+
+    // setting 3rd bit                   1
+    val |= BV(3);
+
+    // setting 3rd bit                   1
+    val |= BV(2);
 
     printf("\nAfter writing 3'b011 to bits 2 to 4:%x\n", val);
     PrintBin(val);
