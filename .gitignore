@@ -1,3 +1,4 @@
 *.exe
 __.vscode__/
+__.Debug__/
 *.json
