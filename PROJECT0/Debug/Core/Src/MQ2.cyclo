@@ -1,0 +1,5 @@
+../Core/Src/MQ2.c:22:11:GetMQ	1
+../Core/Src/MQ2.c:30:6:MQ_Alert	1
+../Core/Src/MQ2.c:34:7:GetMQ_str	2
+../Core/Src/MQ2.c:43:6:MQ_u	1
+../Core/Src/MQ2.c:48:6:MQ_lcd	1

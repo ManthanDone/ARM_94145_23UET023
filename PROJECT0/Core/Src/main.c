@@ -22,6 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include"my_lcd.h"
+#include"MQ2.h"
+#include"UART.h"
 #include<string.h>
 #include<stdint.h>
 #include<stdio.h>
@@ -50,10 +52,8 @@ I2C_HandleTypeDef hi2c1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+ char MQ_str[100];
 
-char str1[100];
-char str2[100];
-char str3[100];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -79,8 +79,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-str2 = "NORMAL";
-str3 = "ALERT !";
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -119,26 +118,11 @@ str3 = "ALERT !";
   while (1)
   {
     /* USER CODE END WHILE */
+	  uint32_t val = GetMQ();
+	  MQ_u(val);
+	  MQ_lcd(val);
 
-	  HAL_ADC_Start(&hadc1);
-	  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-	  ADC_val = HAL_ADC_GetValue(&hadc1);
-	  HAL_ADC_Stop(&hadc1);
-	  HAL_Delay(1000);
-	  MQ_val = ADC_val /10 ;
-
-	  sprintf(str1,"MQ: %d",MQ_val);
-	  lcd16x2_i2c_clear();
-	  //Print on 1st line
-	  lcd16x2_i2c_setCursor(0, 0);   // Row 0, Col 0
-	  if(MQ_val < 200){
-		  lcd16x2_i2c_printf(str2);
-	  }
-	  else{
-		  lcd16x2_i2c_printf(str3);
-	  }
-	  lcd16x2_i2c_setCursor(1, 0);
-	  lcd16x2_i2c_printf(str1);
+	  HAL_Delay(10000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
